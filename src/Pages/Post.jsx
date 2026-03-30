@@ -40,7 +40,7 @@ export default function Post() {
                     <img
                         src={Service.getFileView(post.featuredImage)}
                         alt={post.title}
-                        className="rounded-xl"
+                        className="rounded-xl max-h-96"
                     />
                 </div>
                 <div className=' flex flex-row justify-between mb-2'>
