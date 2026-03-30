@@ -21,7 +21,7 @@ function Like({ slug, currentUserId }) {
                     console.log("Appwrite returned these likes:", currentLikes);
 
                     setLikesArray(currentLikes);
-                    setLikeCount(currentLikes.length); // Fixed typo here (was setCountLike)
+                    setLikeCount(currentLikes.length);
                     setLike(currentLikes.includes(currentUserId));
 
                     setDislikesArray(currentDislikes);
