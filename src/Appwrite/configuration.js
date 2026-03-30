@@ -54,6 +54,23 @@ export class Service {
         }
     }
 
+    async updatePostLikes(slug, likesArray, dislikesArray) {
+        try {
+            return await this.databases.updateDocument(
+                config.appwriteDatabaseId,
+                config.appwriteCollectionId,
+                slug,
+                {
+                    likes: likesArray,
+                    dislikes: dislikesArray
+                }
+            )
+        } catch (error) {
+            console.log("AppWrite error :: updatePostLikes :: error", error)
+            return false;
+        }
+    }
+
     async deletePost(slug) {
         try {
             return await this.databases.deleteDocument(

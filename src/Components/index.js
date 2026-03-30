@@ -12,5 +12,6 @@ import Login from './Login'
 import PostForm from './PostForm/Postform'
 import PostCard from './Postcard'
 import AuthLayout from './AuthLayout'
+import Like_Dislike from './Like-Dislike'
 
-export { Header, Footer, Container, LogoutBtn, Logo, RTE, Button, Input, Select, SignUp, Login, PostForm, PostCard, AuthLayout };
+export { Header, Footer, Container, LogoutBtn, Logo, RTE, Button, Input, Select, SignUp, Login, PostForm, PostCard, AuthLayout, Like_Dislike };
