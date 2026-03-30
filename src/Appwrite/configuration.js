@@ -54,7 +54,7 @@ export class Service {
         }
     }
 
-    async updatePostLikes(slug, likesArray, dislikesArray) {
+    async updatePostReactions(slug, likesArray, dislikesArray) {
         try {
             return await this.databases.updateDocument(
                 config.appwriteDatabaseId,
