@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { Button, Input, Select, RTE } from '../index'
 import service from '../../Appwrite/configuration'
@@ -6,13 +6,14 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 export default function Postform({ post }) {
+    const [isLoading, setIsLoading] = useState(false);
+
     const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
         defaultValues: {
             title: post?.title || '',
             slug: post?.slug || '',
             content: post?.content || '',
             status: post?.status || 'active',
-
         }
     })
 
@@ -20,33 +21,41 @@ export default function Postform({ post }) {
     const userData = useSelector((state) => state.auth.userData);
 
     const submit = async (data) => {
-        if (post) {
-            const file = data.image[0] ? await service.uploadFile(data.image[0]) : null;
+        setIsLoading(true);
 
-            if (file) {
-                service.deleteFile(post.featuredImage);
-            }
+        try {
+            if (post) {
+                const file = data.image[0] ? await service.uploadFile(data.image[0]) : null;
 
-            const dbPost = await service.updatePost(post.$id, {
-                ...data,
-                featuredImage: file ? file.$id : undefined
-            })
+                if (file) {
+                    service.deleteFile(post.featuredImage);
+                }
 
-            if (dbPost) {
-                navigate(`/post/${dbPost.$id}`);
-            }
-        } else {
-            const file = await service.uploadFile(data.image[0]);
-
-            if (file) {
-                const fileId = file.$id;
-                data.featuredImage = fileId;
-                const dbPost = await service.createPost({ ...data, userId: userData.$id });
+                const dbPost = await service.updatePost(post.$id, {
+                    ...data,
+                    featuredImage: file ? file.$id : undefined
+                })
 
                 if (dbPost) {
                     navigate(`/post/${dbPost.$id}`);
                 }
+            } else {
+                const file = await service.uploadFile(data.image[0]);
+
+                if (file) {
+                    const fileId = file.$id;
+                    data.featuredImage = fileId;
+                    const dbPost = await service.createPost({ ...data, userId: userData.$id });
+
+                    if (dbPost) {
+                        navigate(`/post/${dbPost.$id}`);
+                    }
+                }
             }
+        } catch (error) {
+            console.error("Error submitting post:", error);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -73,7 +82,7 @@ export default function Postform({ post }) {
 
     return (
         <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-            <div className="w-2/3 px-2">
+            <div className="w-full md:w-2/3 px-2 mb-4 md:mb-0">
                 <Input
                     label="Title :"
                     placeholder="Title"
@@ -91,7 +100,8 @@ export default function Postform({ post }) {
                 />
                 <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
             </div>
-            <div className="w-1/3 px-2">
+
+            <div className="w-full md:w-1/3 px-2">
                 <Input
                     label="Featured Image :"
                     type="file"
@@ -104,7 +114,7 @@ export default function Postform({ post }) {
                         <img
                             src={service.getFileView(post.featuredImage)}
                             alt={post.title}
-                            className="rounded-lg"
+                            className="rounded-lg object-cover"
                         />
                     </div>
                 )}
@@ -114,8 +124,13 @@ export default function Postform({ post }) {
                     className="mb-4"
                     {...register("status", { required: true })}
                 />
-                <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full p-2">
-                    {post ? "Update" : "Submit"}
+                <Button
+                    type="submit"
+                    bgColor={post ? "bg-green-500" : "bg-blue-600"}
+                    className="w-full p-3 font-semibold"
+                    isLoading={isLoading}
+                >
+                    {isLoading ? (post ? "Updating..." : "Uploading...") : (post ? "Update Post" : "Submit Post")}
                 </Button>
             </div>
         </form>
