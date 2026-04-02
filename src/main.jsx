@@ -10,7 +10,6 @@ import { AuthLayout, Login } from './Components/index.js'
 import Home from './Pages/Home.jsx'
 import LogIn from './Pages/LogIn.jsx'
 import Signup from './Pages/SignUp.jsx'
-import AllPosts from './Pages/AllPosts.jsx'
 import AddPost from './Pages/AddPost.jsx'
 import EditPost from './Pages/EditPost.jsx'
 import Post from './Pages/Post.jsx'
@@ -40,15 +39,7 @@ const router = createHashRouter([
           </AuthLayout>
         ),
       },
-      {
-        path: "/all-posts",
-        element: (
-          <AuthLayout authentication>
-            {" "}
-            <AllPosts />
-          </AuthLayout>
-        ),
-      },
+      
       {
         path: "/add-post",
         element: (
