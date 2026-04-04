@@ -111,8 +111,6 @@ export class Service {
         }
     }
 
-    // file Upload Service
-
     async uploadFile(file) {
         try {
             return await this.storage.createFile(

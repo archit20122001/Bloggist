@@ -41,27 +41,23 @@ function Header() {
     <header className='py-3 shadow bg-blue-950 relative'>
       <Container>
         <nav className='flex items-center justify-between'>
-          {/* Logo */}
           <div className='mr-4'>
             <Link to='/'>
               <Logo className='w-30' />
             </Link>
           </div>
 
-          {/* Hamburger button — visible only on small screens */}
           <button
             className='md:hidden text-white focus:outline-none'
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-label='Toggle menu'
           >
             {menuOpen ? (
-              /* X icon */
               <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none"
                 viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
-              /* Hamburger icon */
               <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none"
                 viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
@@ -69,7 +65,6 @@ function Header() {
             )}
           </button>
 
-          {/* Desktop nav — hidden on small screens */}
           <ul className='hidden md:flex ml-auto text-white'>
             {navItems.map((item) =>
               item.active ? (
@@ -90,7 +85,6 @@ function Header() {
           </ul>
         </nav>
 
-        {/* Mobile dropdown menu */}
         {menuOpen && (
           <ul className='md:hidden flex flex-col mt-3 border-t border-blue-800 pt-3 text-white'>
             {navItems.map((item) =>
