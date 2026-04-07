@@ -25,9 +25,9 @@ function App() {
   }, [])
 
   return !loading ? (
-    <div className='min-h-screen flex flex-col content-between bg-[#5d6a7f] bg-linear-to-b from-[#5d6a7f] via-[#939eb1] via-49% to-[#b6c7e4]'>
+    <div className='min-h-screen flex flex-col content-between bg-[#adabf7] bg-linear-to-t from-[#adabf7] via-[#bae7ff] via-49% to-[#c4ffd2]'>
       <Header />
-      <main className='flex grow'>
+      <main className='flex grow flex-col'>
         <Outlet />
       </main>
       <Footer />

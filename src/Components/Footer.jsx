@@ -3,7 +3,7 @@ import Logo from './Logo'
 
 function Footer() {
   return (
-    <section className="relative overflow-hidden py-10 bg-blue-950 border border-t-2 border-t-black">
+    <section className="relative overflow-hidden py-10 bg-[#030303] bg-linear-to-t from-[#030303] via-[#262626] via-49% to-[#454545]">
       <div className="relative z-10 mx-auto max-w-7xl px-4">
         <div className="-m-6 flex flex-wrap">
           <div className="w-full p-6 md:w-1/2 lg:w-5/12">
@@ -13,7 +13,7 @@ function Footer() {
               </div>
               <div>
                 <p className="text-sm text-gray-300">
-                  &copy; Copyright 2023. All Rights Reserved by DevUI.
+                  &copy; Copyright 6. All Rights Reserved by Arks Group.
                 </p>
               </div>
             </div>

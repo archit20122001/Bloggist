@@ -1,5 +1,5 @@
 import React from 'react'
-import logoimg from '../assets/Logo.png'
+import logoimg from '../assets/Bloggist.png'
 
 function Logo({ className = 'w-24' }) {
     return (

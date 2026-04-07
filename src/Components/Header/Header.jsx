@@ -38,7 +38,7 @@ function Header() {
   }
 
   return (
-    <header className='py-3 shadow bg-blue-950 relative'>
+    <header className='py-3 shadow bg-[#030303] bg-linear-to-t from-[#454545] via-[#262626] via-49% to-[#030303] relative'>
       <Container>
         <nav className='flex items-center justify-between'>
           <div className='mr-4'>
@@ -91,7 +91,7 @@ function Header() {
               item.active ? (
                 <li key={item.name}>
                   <button
-                    className='w-full text-left px-4 py-3 duration-200 hover:bg-blue-800 rounded-lg'
+                    className='w-full text-left pl-6 pr-4 py-3 duration-200 hover:bg-blue-800 rounded-lg'
                     onClick={() => handleNavClick(item.slug)}>
                     {item.name}
                   </button>
