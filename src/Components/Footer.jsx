@@ -13,7 +13,7 @@ function Footer() {
               </div>
               <div>
                 <p className="text-sm text-gray-300">
-                  &copy; Copyright 6. All Rights Reserved by Arks Group.
+                  &copy; Copyright 2026. All Rights Reserved by Arks Group.
                 </p>
               </div>
             </div>
