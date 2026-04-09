@@ -54,7 +54,6 @@ function Like({ slug, currentUserId }) {
                 setDislikeCount(dislikeCount - 1);
             }
         }
-
         setLikesArray(updatedLikes);
         setDislikesArray(updatedDislikes);
 

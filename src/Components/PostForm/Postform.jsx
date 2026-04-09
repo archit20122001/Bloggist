@@ -114,7 +114,7 @@ export default function Postform({ post }) {
                         <img
                             src={service.getFileView(post.featuredImage)}
                             alt={post.title}
-                            className="rounded-lg object-cover "
+                            className="rounded-lg object-cover"
                         />
                     </div>
                 )}
